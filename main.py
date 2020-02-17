@@ -1,1 +1,2 @@
 morse = ['.-']
+something = 'nothing'
