@@ -8,27 +8,27 @@ This program will allow the user to convert an english sentence into Morse code 
 When converting Morse code to english, the user must put a space between letters, and two spaces between words.
 
 """
+import constant
 
 
 def morse_to_english(message):
     print("Morse to English")
+    # iterate through message until space is found, adding symbols to temp variable
+    # when space is found, check for double space, if double space add space to converted message
+    # if only single space is found, iterate through morse list until match is found
+    # add corresponding alpha (using index number) to the converted message
+    # return converted message to main program
+
 
 def english_to_morse(message):
     print("English to Morse")
+    # iterate through message setting current character to temp variable
+    # compare current character to alpha list
+    # add corresponding Morse code sequence to converted message
+    # add space to converted message after every sequence
+    # if a space is encountered in original message, add two spaces to converted message
+    # return converted message to main program
 
-alpha = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
-         'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
-         'W', 'X', 'Y', 'Z', '0', '1', '2', '3', '4', '5', '6',
-         '7', '8', '9', '.', ' '
-]
-
-morse = [
-    ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....",
-    "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.",
-    "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-",
-    "-.--", "--..", "-----", ".----", "..---", "...--", "....-",
-    ".....", "-....", "--...", "---..", "----.", ".-.-.-", "......."
-]
 
 userInput = [""]
 userCont = True
@@ -40,35 +40,36 @@ print("This program converts a message from English to Morse code or vice versa.
       " must be used to indicate a space between words.")
 
 while userCont:
-    userOption = input("If you would like to convert a message from English to Morse code enter 0\n"
-                       "If you would like to convert a message from Morse code to English enter 1\n"
-                       "If you would like to quit enter 2: ")
+    userOption = input("Please enter an option:\n"
+                       "1. English to Morse code\n"
+                       "2. Morse code to English\n"
+                       "3. Quit:\n")
     while not isValid:
         try:
             userOption = int(userOption)
-            if userOption == 0 or userOption == 1 or userOption == 2:
+            if userOption == 1 or userOption == 2 or userOption == 3:
                 print("You entered:", userOption)
                 isValid = True
             else:
                 print("You entered an invalid option.")
-                userOption = input("To convert from English to Morse code enter 0\n"
-                                   "To convert from Morse code to English enter 1\n"
-                                   "To quite enter 2: ")
+                userOption = input("To convert from English to Morse code enter 1\n"
+                                   "To convert from Morse code to English enter 2\n"
+                                   "To quite enter 3:\n")
         except ValueError:
             print("You entered an invalid option.")
-            userOption = input("To convert from English to Morse code enter 0\n"
-                               "To convert from Morse code to English enter 1\n"
-                               "To quite enter 2: ")
+            userOption = input("To convert from English to Morse code enter 1\n"
+                               "To convert from Morse code to English enter 2\n"
+                               "To quite enter 3:\n")
 
-    if userOption == 0:
+    if userOption == 1:
         print("You have opted to convert from English to Morse code.")
         userInput = input("Please enter a message to be converted:\n")
         english_to_morse(userInput)
-    elif userOption == 1:
+    elif userOption == 2:
         print("You have opted to convert from Morse code to English.")
         userInput = input("Please enter a message to be converted:\n")
         morse_to_english(userInput)
-    elif userOption == 2:
+    elif userOption == 3:
         print("Goodbye.")
         exit(0)
 
